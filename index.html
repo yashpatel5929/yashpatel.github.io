@@ -1,186 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Senior Android Developer | Portfolio</title>
+    <title>Yash Patel | Mobile Application Developer</title>
 
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- Custom Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Fade animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-16px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .float {
+            animation: float 7s ease-in-out infinite;
+        }
+
+        /* Phone mockup */
+        .phone {
+            width: 180px;
+            border-radius: 28px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+            position: absolute;
+            transition: transform 0.2s ease-out;
+        }
+
+        .phone img {
+            width: 100%;
+            display: block;
+        }
+
+        .phone.back {
+            filter: blur(2px);
+            opacity: 0.55;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
     </style>
-  </head>
+</head>
 
-  <body class="bg-gray-950 text-gray-200">
-    <!-- HERO SECTION -->
-    <section class="min-h-screen flex items-center justify-center px-6">
-      <div class="text-center max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Yash Patel</h1>
-        <p class="text-xl text-indigo-400 mb-6">Senior Android Developer</p>
-        <p class="text-gray-400 mb-8">
-          Building secure, scalable, and modern mobile applications using
-          Android, Kotlin, Flutter, and APIs.
-        </p>
-        <a
-          href="#contact"
-          class="inline-block px-8 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition transform hover:-translate-y-1"
-        >
-          Contact Me
-        </a>
-      </div>
-    </section>
+<body class="bg-[#0B1220] text-gray-300">
 
-    <!-- ABOUT -->
-    <section class="py-20 px-6 bg-gray-900">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">About Me</h2>
-        <p class="text-gray-400 leading-relaxed">
-          I am a Senior Android Developer with experience building
-          enterprise-scale mobile applications. I enjoy solving complex
-          problems, owning critical features, and learning new technologies. My
-          work focuses on performance, security, and delivering high-quality
-          user experiences.
-        </p>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="py-20 px-6">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold mb-10">Skills</h2>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="skill-card">
-            <i class="fab fa-android text-4xl text-green-400 mb-4"></i>
-            <p>Android</p>
-          </div>
-          <div class="skill-card">
-            <i class="fa-solid fa-code text-4xl text-indigo-400 mb-4"></i>
-            <p>Kotlin</p>
-          </div>
-          <div class="skill-card">
-            <i class="fa-brands fa-flutter text-4xl text-blue-400 mb-4"></i>
-            <p>Flutter</p>
-          </div>
-          <div class="skill-card">
-            <i
-              class="fa-solid fa-network-wired text-4xl text-yellow-400 mb-4"
-            ></i>
-            <p>APIs</p>
-          </div>
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full bg-[#0B1220]/80 backdrop-blur z-50">
+        <div class="max-w-6xl mx-auto px-6 py-8 flex justify-between items-center">
+            <h1 class="text-white font-bold text-xl">Yash Patel</h1>
+            <div class="space-x-6 text-lg">
+                <a href="#experience" class="hover:text-orange-400">Experience</a>
+                <a href="#projects" class="hover:text-orange-400">Projects</a>
+                <a href="#skills" class="hover:text-orange-400">Skills</a>
+                <a href="#contact" class="hover:text-orange-400">Contact</a>
+            </div>
         </div>
-      </div>
-    </section>
+    </nav>
 
-    <!-- PROJECTS -->
-    <section class="py-20 px-6 bg-gray-900">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-10">Projects</h2>
+    <!-- HERO -->
+    <section class="min-h-screen flex items-center pt-24 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
-        <div class="grid md:grid-cols-3 gap-8">
-          <!-- Project Card -->
-          <div class="project-card">
-            <h3 class="text-xl font-semibold mb-3">VMN Registration Journey</h3>
-            <p class="text-gray-400 text-sm">
-              Owned and implemented VMN registration flow by independently
-              learning the domain and coordinating with cross-functional teams.
-            </p>
-          </div>
+            <!-- LEFT -->
+            <div class="fade-up glass rounded-2xl p-8">
+                <p class="text-orange-400 font-medium mb-2">Hello 👋</p>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                    I’m Yash Patel
+                </h1>
+                <h2 class="text-xl text-gray-400 mb-6">
+                    Mobile Application Developer
+                </h2>
+                <p class="text-gray-400 max-w-md mb-8">
+                    4.7+ years of experience building scalable, secure and high-performance
+                    Android & Flutter applications across FinTech and OTT platforms.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#contact"
+                        class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg transition">
+                        Contact Me
+                    </a>
+                    <a href="resume/Yash_Patel_Resume_Android.pdf"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 border border-orange-500
+                           text-orange-400 px-6 py-3 rounded-lg hover:bg-orange-500 hover:text-white transition">
+                 
+                   <i data-feather="file-text" class="w-5 h-5"></i>
+                   View Resume
+                 </a>
+                </div>
+            </div>
 
-          <div class="project-card">
-            <h3 class="text-xl font-semibold mb-3">API 35 Upgrade</h3>
-            <p class="text-gray-400 text-sm">
-              Led Android native upgrade under Play Store deadline, taking
-              calculated risks and planning phased Cordova migration.
-            </p>
-          </div>
+            <!-- RIGHT: MULTI PHONE COLLAGE -->
+            <div class="relative h-[520px] fade-up" id="parallax">
 
-          <div class="project-card">
-            <h3 class="text-xl font-semibold mb-3">Flutter Migration</h3>
-            <p class="text-gray-400 text-sm">
-              Learning Flutter independently while collaborating with teams to
-              migrate features and introduce modern APIs.
-            </p>
-          </div>
+                <!-- Back -->
+                <div class="phone back float" data-depth="2" style="top:40px; left:20px; transform: rotate(-18deg);">
+                    <img src="images/plexigo.png">
+                </div>
+
+                <div class="phone back float" data-depth="3"
+                    style="bottom:40px; right:20px; transform: rotate(16deg); animation-delay:2s;">
+                    <img src="images/investap.png">
+                </div>
+
+                <!-- Mid -->
+                <div class="phone float" data-depth="5" style="top:10px; right:120px; transform: rotate(10deg);">
+                    <img src="images/multibank.png">
+                </div>
+
+                <div class="phone float" data-depth="4"
+                    style="bottom:20px; left:140px; transform: rotate(-8deg); animation-delay:1s;">
+                    <img src="images/yono.png">
+                </div>
+
+
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section class="py-20 px-6">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">Experience</h2>
-        <div class="bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition">
-          <h3 class="text-xl font-semibold">Senior Android Developer</h3>
-          <p class="text-indigo-400 text-sm mb-2">
-            Enterprise Mobile Applications
-          </p>
-          <p class="text-gray-400">
-            Worked on large-scale financial and enterprise applications,
-            focusing on security, performance, and modern architecture.
-          </p>
+    <section id="experience" class="py-24 bg-[#0B1220]">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-12 fade-up">Experience</h2>
+
+            <div class="relative border-l border-white/10 pl-8 space-y-12 fade-up">
+
+                <!-- IBM -->
+                <div class="glass rounded-xl p-6 relative">
+                    <span class="absolute -left-[11px] top-6 w-5 h-5 bg-orange-500 rounded-full"></span>
+                    <h3 class="text-xl font-semibold text-white">Application developer - Mobile</h3>
+                    <p class="text-orange-400 text-sm mb-2">IBM · 2025 – Present</p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Working on one of India’s largest banking & financial applications.
+                        Key contributions include VMN & SIM binding journey, API level 35 upgrade,
+                        Play Store deadline releases, and secure authentication flows.
+                        Actively collaborating with backend, QA, and product teams to deliver
+                        scalable, compliant, and high-performance mobile solutions.
+                    </p>
+                </div>
+
+                <!-- Neosoft -->
+                <div class="glass rounded-xl p-6 relative">
+                    <span class="absolute -left-[11px] top-6 w-5 h-5 bg-orange-500 rounded-full"></span>
+                    <h3 class="text-xl font-semibold text-white">Software Engineer</h3>
+                    <p class="text-orange-400 text-sm mb-2">Neosoft Technologies · 2021 – 2025</p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Contributed to SBI Mutual Fund’s Investap application, handling
+                        end-to-end development of key user journeys including folio creation,
+                        SIP flows, and transaction modules. Focused on clean architecture,
+                        performance optimization, bug fixing, and seamless API integration.
+                    </p>
+                </div>
+
+                <!-- Freelance / Client -->
+                <div class="glass rounded-xl p-6 relative">
+                    <span class="absolute -left-[11px] top-6 w-5 h-5 bg-orange-500 rounded-full"></span>
+                    <h3 class="text-xl font-semibold text-white">Associate Software Engineer</h3>
+                    <p class="text-orange-400 text-sm mb-2">Neosoft Technologies· 2021 – 2025</p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Worked on OTT and fintech client applications such as Plexigo / TFS Play
+                        and Multibank. Implemented media streaming features, crypto trading flows,
+                        biometric authentication, ML-based document scanning, and TradingView
+                        chart integrations.
+                    </p>
+                </div>
+
+            </div>
         </div>
-      </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-3xl font-bold text-white mb-12">Projects</h2>
+      
+          <div class="grid md:grid-cols-2 gap-12">
+      
+            <!-- YONO -->
+            <div class="fade-up glass rounded-xl p-6 transition hover:-translate-y-2">
+              <div class="flex flex-col sm:flex-row gap-6 items-start">
+      
+                <div class="flex-shrink-0">
+                  <img
+                    src="images/yono.png"
+                    alt="YONO App Screenshot"
+                    class="w-32 sm:w-36 rounded-lg shadow-lg"
+                  />
+                </div>
+      
+                <div class="flex-1">
+                  <h3 class="text-xl text-white font-semibold mb-2">YONO</h3>
+                  <p class="text-gray-400 mb-4">
+                    Worked on secure banking journeys, performance optimization
+                    and large-scale production releases. Developed VMN & SIM binding flows, handled API 35 upgrade,
+                    and delivered Play Store deadline-critical releases.
+                  </p>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.sbi.lotusintouch&hl=en_IN"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 transition text-sm"
+                  >
+                    <i data-feather="external-link" class="w-4 h-4"></i>
+                    View on Play Store
+                  </a>
+                </div>
+      
+              </div>
+            </div>
+      
+            <!-- Investap -->
+            <div class="fade-up glass rounded-xl p-6 transition hover:-translate-y-2">
+              <div class="flex flex-col sm:flex-row gap-6 items-start">
+      
+                <div class="flex-shrink-0">
+                  <img
+                    src="images/investap.png"
+                    alt="Investap App Screenshot"
+                    class="w-32 sm:w-36 rounded-lg shadow-lg"
+                  />
+                </div>
+      
+                <div class="flex-1">
+                  <h3 class="text-xl text-white font-semibold mb-2">
+                    Investap (SBI Mutual Fund)
+                  </h3>
+                  <p class="text-gray-400 mb-4">
+                    Built and enhanced Investap using Kotlin and MVP architecture for seamless mutual fund
+                    access.
+                    Improved Folio Creation by auto-filling data, boosting process speed and UX by 70%.
+                    Developed Quick SIP for OTM users, enabling SIP registration 2× faster with fewer clicks.
+                    Introduced Goal Planning, offering personalized investment strategies for 800K+ users.
+                  </p>
+                  <a
+                  href="https://play.google.com/store/apps/details?id=com.sbi.mf&hl=en_IN"
+                  target="_blank"
+                  class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 transition text-sm"
+                >
+                  <i data-feather="external-link" class="w-4 h-4"></i>
+                  View on Play Store
+                </a>
+                </div>
+      
+              </div>
+            </div>
+      
+            <!-- Plexigo / TFS Play -->
+            <div class="fade-up glass rounded-xl p-6 transition hover:-translate-y-2">
+              <div class="flex flex-col sm:flex-row gap-6 items-start">
+      
+                <div class="flex-shrink-0">
+                  <img
+                    src="images/plexigo.png"
+                    alt="Plexigo App Screenshot"
+                    class="w-32 sm:w-36 rounded-lg shadow-lg"
+                  />
+                </div>
+      
+                <div class="flex-1">
+                  <h3 class="text-xl text-white font-semibold mb-2">
+                    Plexigo / TFS Play
+                  </h3>
+                  <p class="text-gray-400 mb-4">
+                    Built OTT streaming features with focus on UI performance,
+                    content delivery optimization, and scalable architecture.
+                  </p>
+                  <a
+                  href="https://play.google.com/store/apps/details?id=com.release.plexigo&hl=en_IN"
+                  target="_blank"
+                  class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 transition text-sm"
+                >
+                  <i data-feather="external-link" class="w-4 h-4"></i>
+                  View on Play Store
+                </a>
+                  
+                </div>
+      
+              </div>
+            </div>
+      
+            <!-- Multibank -->
+            <div class="fade-up glass rounded-xl p-6 transition hover:-translate-y-2">
+              <div class="flex flex-col sm:flex-row gap-6 items-start">
+      
+                <div class="flex-shrink-0">
+                  <img
+                    src="images/multibank.png"
+                    alt="Multibank App Screenshot"
+                    class="w-32 sm:w-36 rounded-lg shadow-lg"
+                  />
+                </div>
+      
+                <div class="flex-1">
+                  <h3 class="text-xl text-white font-semibold mb-2">
+                    Multibank
+                  </h3>
+                  <p class="text-gray-400 mb-4">
+                    Crypto trading application featuring biometric authentication,
+                    ML-based document scanning, and TradingView chart integration.
+                  </p>
+                  <a
+                  href="https://play.google.com/store/apps/details?id=com.multibank.app&hl=en_IN"
+                  target="_blank"
+                  class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 transition text-sm"
+                >
+                  <i data-feather="external-link" class="w-4 h-4"></i>
+                  View on Play Store
+                </a>
+                </div>
+      
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-24 bg-[#0F172A]">
+        <div class="max-w-6xl mx-auto px-6 fade-up">
+            <h2 class="text-3xl font-bold text-white mb-12">Skills</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-orange-400 mb-3">Languages</h3>
+                    <p>Kotlin, Java</p>
+                </div>
+                <div>
+                    <h3 class="text-orange-400 mb-3">Android</h3>
+                    <p>Android SDK, Jetpack, MVVM, Hilt, Room, Firebase, Compose, Coroutines</p>
+                </div>
+                <div>
+                    <h3 class="text-orange-400 mb-3">Tools</h3>
+                    <p>Android Studio, Git, Jira, Postman, SVN</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-20 px-6 bg-gray-900">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
-        <p class="text-gray-400 mb-8">
-          Interested in working together or discussing opportunities? Let’s
-          connect.
-        </p>
-
-        <div class="flex justify-center space-x-6 text-2xl">
-          <a href="#" class="hover:text-indigo-400 transition"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a href="#" class="hover:text-indigo-400 transition"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a
-            href="mailto:your.email@example.com"
-            class="hover:text-indigo-400 transition"
-          >
-            <i class="fa-solid fa-envelope"></i>
-          </a>
+    <section id="contact" class="py-24">
+        <div class="max-w-6xl mx-auto px-6 text-center fade-up">
+            <h2 class="text-3xl font-bold text-white mb-6">Let’s Connect</h2>
+            <div class="flex justify-center gap-6 text-orange-400">
+                <a href="mailto:yashp6765@gmail.com"><i data-feather="mail"></i></a>
+                <a href="https://www.linkedin.com/in/yashp6765/"><i data-feather="linkedin"></i></a>
+                <a href="https://github.com/yashpatel5929"><i data-feather="github"></i></a>
+                <a href="https://leetcode.com/u/yashjpatel/"><i data-feather="code"></i></a>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="py-6 text-center text-gray-500 text-sm">
-      © 2026 Yash Patel. All rights reserved.
+    <footer class="text-center text-gray-500 py-6 text-sm">
+        © 2026 Yash Patel
     </footer>
 
-    <!-- Reusable Styles -->
-    <style>
-      .skill-card {
-        @apply bg-gray-900 rounded-xl p-6 text-center hover:bg-gray-800 transition transform hover:-translate-y-1;
-      }
+    <script>
+        feather.replace();
 
-      .project-card {
-        @apply bg-gray-950 border border-gray-800 rounded-xl p-6 hover:border-indigo-500 transition transform hover:-translate-y-1;
-      }
-    </style>
-  </body>
+        // Fade observer
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('show');
+            });
+        });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Parallax (desktop only)
+        const container = document.getElementById('parallax');
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', e => {
+                document.querySelectorAll('.phone').forEach(el => {
+                    const depth = el.dataset.depth;
+                    const x = (window.innerWidth / 2 - e.pageX) / (20 / depth);
+                    const y = (window.innerHeight / 2 - e.pageY) / (20 / depth);
+                    el.style.transform += ` translate(${x}px, ${y}px)`;
+                });
+            });
+        }
+    </script>
+
+</body>
+
 </html>
